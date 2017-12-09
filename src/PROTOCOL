@@ -1,0 +1,35 @@
+Work in progress
+
+Stewart Platform protocol
+
+Communication with the Stewart platform is done via sockets.
+
+When you launch transform you can supply a port via -p. If
+not supplied, transform will not create a socket.
+
+
+
+If the 'ipc' member variable of StewartConfig is set to 
+non-zero, the platform management code will create a shared 
+memory region and semaphore for exporting the current status
+of the Stewart platform.
+
+The memory region contains the following binary data:
+
+#define STEWART_SERVO_STATIONARY 0
+#define STEWART_SERVO_MOVING     1
+
+typedef struct _StewartServo {
+    uchar8_t status; /* STEWART_SERVO_* */
+    int32_t angle;          /* Angle in degrees * 10^3 */
+    int32_t speed;          /* Degrees per second * 10^3 */
+    int64_t ts_sec;     /* Estimated timestamp of move completion */
+    int64_t ts_usec;    /* Estimated timestamp of move completion */
+} __attribute__((packed)) StewartServo;
+
+typedef struct _StewartIPC {
+    int64_t ts_sec;       /* seconds */
+    int64_t ts_usec;      /* microseconds */
+    StewartServo servos[6];
+} __attribute__((packed)) StewartIPC;
+
