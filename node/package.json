@@ -1,0 +1,15 @@
+{
+  "name": "stewie",
+  "version": "0.0.1",
+  "description": "Stewart platform control examples",
+  "main": "stewie.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "dualshock-controller": "^1.1.1",
+    "node-hid": "^0.5.7"
+  }
+}
