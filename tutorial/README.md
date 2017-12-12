@@ -27,19 +27,21 @@ The six degrees of freedom include movement in along three axis (X, Y, Z) as wel
 
 # Ingredients
 
-Acquiring the parts is the most time consuming task. We've taken the guess work out by providing exact part descriptions and links to example products on the Internet. There are three main categories of parts:
+Acquiring the parts is the most time consuming task. We've taken the guess work out by providing exact part descriptions and links to example products on the Internet.
+
+There are three main categories of parts:
 
 * The mechanical parts for the Stewart platform
 * The electronics; wires, servos, breakout board
 * The computer for controlling the Stewart platform
 
-The total cost of all required parts, including the computer board, is ~$300US. If you print your own parts, you can save ~$70US.
+The total cost of all required parts, including the computer board, is ~$300US--having a 3D printer can save ~$66US.
 
 ## Mechanical parts
 
 The mechanical parts needed for the Stewart platform include the top and bottom platforms, control rods to connect servos to the top platform, and the 3D printed components.
 
-The total cost to acquire the mechanical parts is approximately $100US. If you have your own 3D printer, you can save ~$66US.
+The total cost to acquire the mechanical parts is approximately $100US (only $34US if you print your own 3D printer.)
 
 
 ## Top and Base platform
