@@ -68,8 +68,6 @@ You can download and print the models yourselves, or print them via a 3rd party 
 
 PLA is a sufficient material to use when printing.
 
-Depending on where you have your parts printed, the cost to print all of the necessary parts is around $70US.
-
 ### Servo mount
 
 ![](servomount.png?s=size:small,align:right)Sized to fit standard size servos, each block holds two servos. The servo blocks are designed to hold servos of depth 27.8mm, width 20mm.
@@ -154,7 +152,7 @@ The following tools are used to assemble the pieces:
 | Wire stripper or utility knife | Used to strip the wires from the 5V 10A DC power supply |
 
 
-# Step 1: Assemble six control rods
+# Step: Assemble six control rods
 
 ![Parts used in this step](control-rod-parts.png)
 
@@ -187,7 +185,7 @@ Be sure to orient the servo arm correctly as seen in this image.
 
 
 
-# Step 4: Drill top and base platforms
+# Step: Drill top and base platforms
 
 Print out the top and bottom platform templates.
 
@@ -209,6 +207,7 @@ Print the templates from the PDFs on 8.5” x 11” paper in portrait mode -- an
 *Tip:* To prevent slipping while drilling, use tape to affix the board to the back of top platform assembly. 
 
 You can use a screwdriver to tap an indentation on the exact center points to help prevent the drill from wandering.
+
 
 ![](drilled-base-platform.png)When drilling the base platform, you only need to drill the six holes along the edge--the third hole is optional.
 
