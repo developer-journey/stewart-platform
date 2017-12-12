@@ -1,14 +1,12 @@
 ---
-title: Stewart platform
+title: Building a Stewart platform
 author: James Ketrenos
 license: cc-by-3.0
 tags: robot, "stewart platform", "parallel robot"
 ---
-# Building a Stewart platform
+# Introduction
 
-## Introduction
-
-![Do the Wave!](Wave.gif?s=size:small,align:right)
+![Do the Wave!](wave.gif?s=size:medium,align:right)
 
 Connecting the digital world to the physical world is exciting.
 
@@ -41,7 +39,7 @@ The total cost of all required parts, including the computer board, is ~$300US. 
 
 The mechanical parts needed for the Stewart platform include the top and bottom platforms, control rods to connect servos to the top platform, and the 3D printed components.
 
-The total cost to acquire the mechanical parts is approximately $100US. If you have your own 3D printer, you can save ~$70US.
+The total cost to acquire the mechanical parts is approximately $100US. If you have your own 3D printer, you can save ~$66US.
 
 
 ## Top and Base platform
@@ -114,7 +112,7 @@ Items you may already have (HDMI cables, keyboard, etc.) are not included in the
 |  1  | PCA9685 breakout board | I2C based board that provides 16 PWM channels. The Stewart platform only needs 6 of those channels--leaving 10 available for LEDs and other features! Different vendors sell the PCA9685 breakout boards with all parts pre-soldered. [Amazon](https://www.amazon.com/dp/B014KTSMLA) | $12 |
 |  4  | Female to female jumper wires | Used to connect GND, VCC, I2C SDA, and I2C SCL from the UP’s 40-pin HAT to the PCA9685 board | |
 |  1  | 5V 10A DC power source | Used to provide power to the servos controlled by the PCA9685. Powering six servos will pull more current than a lower amperage power adapter can supply.  [Amazon](https://www.amazon.com/ALITOVE-Adapter-Converter-Charger-5-5x2-1mm/dp/B01M0KLECZ) | $21 |
-|  1  | Female barrel plug connector | Used to create a connector for the 5V 10A DC power supply [Amazon](https://www.amazon.com/ALITOVE-Adapter-Converter-Charger-5-5x2-1mm/dp/B01M0KLECZ). If you want to get one by itself, see [Amazon](https://www.amazon.com/CableWholesales-Female-Power-Terminal-Adapter/dp/B009H0TJ88) | $0 |
+|  1  | Female barrel plug connector | Used to create a connector for the 5V 10A DC power supply [Amazon](https://www.amazon.com/ALITOVE-Adapter-Converter-Charger-5-5x2-1mm/dp/B01M0KLECZ). This comes with the 10A power supply linked above. If you want to get one by itself, see [Amazon](https://www.amazon.com/CableWholesales-Female-Power-Terminal-Adapter/dp/B009H0TJ88) | $0 |
 |  2  | 12” length of 18AWG or lower | Used to connect the female barrel plug to the PCA9685’s DC V+ and GND terminals. | |
 
 
@@ -126,7 +124,7 @@ You need an UP board running Ubuntu 16.04 or newer for this recipe. If you do no
 | Qty | Name | Description | Est.$ |
 |:---:|-----------|-------------|--------|
 |  1  | UP board  | Used to solve the Stewart platform equations, control the servos, and provide additional compute resources for custom features. [up-shop](https://up-shop.org/up-boards/2-up-board-2gb-16-gb-emmc-memory.html) | $99 |
-|  1  | 5V 4A power supply for the UP board | Provides power to the UP board. [up-shop](https://up-shop.org/up-peripherals/65-dc-power-adapter-for-up-board-eu-plug.html) | $11 |
+|  1  | 5V 4A power supply for the UP board | Provides power to the UP board. [up-shop](https://up-shop.org/up-peripherals/65-dc-power-adapter-for-up-board-eu-plug.html) The 5V 10A supply (in the prior section) may is typically enough to power both the servos **and** the UP board, however using a single power supply requires you to build a Y-connector. | $11 |
 |  1  | USB Keyboard | Used for input to the UP board | |
 |  1  | HDMI cable | Used for the UP board | |
 |  1  | HDMI monitor | Used for the UP board | |
@@ -302,12 +300,12 @@ Attach one 12” length of 18AWG wire to the PCA9685’s GND terminal and the ot
 
 Attach the other side of the wires to the female barrel plug connector. Make sure the PCA9685’s V+ terminal is connected to the + terminal on the barrel connector.
 
-Do not plug the power supply into an outlet yet.
+**Do not plug the power supply into an outlet yet.**
 
 
 ## Step: Connect peripherals to UP board
 
-Connect the USB keyboard, HDMI cable, and DC adapter. Do not plug the power supply into an outlet yet.
+Connect the USB keyboard, HDMI cable, and DC adapter. **Do not plug the power supply into an outlet yet.**
 
 
 ![Power, HDMI, and USB keyboard connected to UP board](up-board.png?s=align:center)
@@ -320,21 +318,21 @@ Remove all of your tools from the vicinity of the UP board and PCA9685 breakout 
 Re-check that all of your connections are still good, and that no wires have come loose. You are now ready to supply power to the UP board and PCA9685.
 
 
-Using a splitter, a single 5V 10A adapter provides power to both the UP and PCA9685.
+Using a splitter, a single 5V 10A adapter provides power to both the UP board and PCA9685.
 
 ![](stewart-platform.jpg) Once power is applied, the UP board’s power LED should illuminate. Similarly, an LED should illuminate on the PCA9685 breakout board.
 
 
-If you have not already installed a Linux operating system on the UP board, you can follow you can follow Steps 1 through 5 of [Intel RealSense Robotic Development Kit](https://01.org/developerjourney/recipe/intel-realsense-robotic-development-kit) to get Ubuntu 16.04 installed.
+If you have not already installed a Linux operating system on the UP board, you can follow Steps 1 through 5 of [Intel RealSense Robotic Development Kit](https://01.org/developerjourney/recipe/intel-realsense-robotic-development-kit) to get Ubuntu 16.04 installed.
 
-This will prepare your UP to initialize the Stewart platform during the final assembly steps.
+This will prepare your UP board to initialize the Stewart platform during the final assembly steps.
 
 
 # Step: Initialize the servos
 
 Prior to finalizing the Stewart platform by installing the screw into servo arms, the servos must be initialized to zero. 
 
-To do that, use the ‘transform’ utility (provided via the stewart-platform repository) to initialize all 6 servos to zero.
+To do that, use the ‘transform’ utility (provided via the stewart-platform repository) to initialize all six servos to zero.
 
 
 ## Install build tools and git
@@ -365,7 +363,7 @@ sudo bin/transform 0 0 0  0 0 0
 
 The servos should all move to their **internal** zero position. 
 
-If the software can not connect to the PCA9685 device, it will output an error. If you encounter an error, make sure that you are running the ubilinux kernel provided by UP (as described in the installation tutorial)--without that kernel, the 40-pin HAT is not enabled.
+If the software can not connect to the PCA9685 device, it will output an error. If you encounter an error, make sure that you are running the ubilinux kernel provided by UP board (as described in the installation tutorial)--without that kernel, the 40-pin HAT is not enabled.
 
 ## Adjust the servos to zero position
 
@@ -378,6 +376,7 @@ While servo is at zero, remove and reset the servo arm to horizontal.
 
 ![Arm needs to be flipped](initialized-needs-flip.png?s=align:right) **Note** the servo arm may not be able to be exactly horizontal. 
 
+The servo arms have 25 teeth in them to grip the servo. This allows them to be offset by one half of a tooth to provide better alignment by rotating the servo arm 180 degrees.
 
 To remedy, unscrew the control rod from the servo arm, rotate the servo arm 180 degrees, and see if it can mount closer to horizontally. Pick whichever is closest to horizontal. Re-attach control rod.
 
@@ -385,11 +384,11 @@ To remedy, unscrew the control rod from the servo arm, rotate the servo arm 180 
 ![Horizontal at zero](servo-corrected.png)Arm is now horizontal at servo 0 position. Install the servo arm set screw to fix the arm at this position.
 
 
-# Step: Put the platform through it’s motions
+# Step: Put the platform through its motions
 
 You are now ready to control the Stewart platform!
 
-Boot the UP back up and use the transform routine to test the performance of the platform.
+Boot the UP board back up and use the transform routine to test the performance of the platform.
 
 The ‘transform’ utility allows you to move the platform in three dimensions (the first three parameters) in millimeters, and to tilt the platform in three angles (the last three parameters) in degrees.
 
@@ -410,17 +409,19 @@ sudo bin/transform 0 -5 0  0 0 0 # back
 
 Experiment with all of the parameters.
 
+For information on how the Stewart platform equations are solved in software, see the journey entry [Solving Stewie](https://01.org/developerjourney/solving-stewie).
+
 View `stewart-platform/README.md` for additional information and utilities provided with the Stewart platform project.
 
 # Step: Do the wave!
 
 The `transform` utility can either take input from the command line, or via `stdin`. Included in the [stewart-platform project](https://github.com/developer-journey/stewart-platform) is a NodeJS application which will output to stdout command for transform.
 
-![](Wave.gif?s=size:small,align:left)
+![](wave.gif?s=size:small,align:left)
 ```bash
 sudo apt install -y nodejs
 cd ~
-node node/motions | sudo bin/transform
+node node/wave | sudo bin/transform
 ```
 
 
