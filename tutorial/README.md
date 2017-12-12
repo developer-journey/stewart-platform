@@ -55,9 +55,9 @@ The total cost to acquire the mechanical parts is approximately $100US. If you h
 
 | Qty | Name | Description | Est.$ |
 |:---:|-----------|-------------|--------|
-| 12  | 10mm M3 threaded shaft (set screw) | Used to connect the ball joint to the connecting rod. [Amazon link](https://www.amazon.com/RC4ZS0010-RC4WD-Threaded-Shafts-Screws/dp/B00A795L30) | $5 |
-|  6  |65mm M3 aluminum standoff spacer|Used as the connecting rod. [Amazon link](https://www.amazon.com/gp/product/B01NBXUD1E) | $5 |
-| 12  |M3 straight ball joint|Pivot points between the connecting rods, the servos, and the platform. [Amazon link](https://www.amazon.com/RC4WD-Medium-Straight-Plastic-Rod/dp/B009PBXIRW) | $5 |
+| 12  | 10mm M3 threaded shaft (set screw) | Used to connect the ball joint to the connecting rod. [Amazon](https://www.amazon.com/RC4ZS0010-RC4WD-Threaded-Shafts-Screws/dp/B00A795L30) | $5 |
+|  6  |65mm M3 aluminum standoff spacer|Used as the connecting rod. [Amazon](https://www.amazon.com/gp/product/B01NBXUD1E) | $5 |
+| 12  |M3 straight ball joint|Pivot points between the connecting rods, the servos, and the platform. [Amazon](https://www.amazon.com/RC4WD-Medium-Straight-Plastic-Rod/dp/B009PBXIRW) | $5 |
 
 
 ## 3D Printed Parts
@@ -74,6 +74,8 @@ Depending on where you have your parts printed, the cost to print all of the nec
 
 ![](servomount.png?s=size:small,align:right)Sized to fit standard size servos, each block holds two servos. The servo blocks are designed to hold servos of depth 27.8mm, width 20mm.
 
+Download the STL file [here](https://raw.githubusercontent.com/developer-journey/stewart-platform/master/models/ServoMount.stl).
+
 |Qty|STL Link|Dimensions|Volume|
 |:--:|:---|:---|:---|
 |3|[Servo mount](https://raw.githubusercontent.com/developer-journey/stewart-platform/master/models/ServoMount.stl)|76mm x 26mm x 58mm|34,430mm ^ 3
@@ -81,6 +83,8 @@ Depending on where you have your parts printed, the cost to print all of the nec
 ### Servo arm
 
 ![](servoarm.png?s=size:small,align:right)Configured to fit 25-tooth servos (T25) the servo arms are 34mm from center to rod pivot point. The arms are bidirectional allowing you to adjust alignment after the servos have been set to their zero position.
+
+Download the STL file [here](https://raw.githubusercontent.com/developer-journey/stewart-platform/master/models/ServoArm.stl).
 
 |Qty|STL Link|Dimensions|Volume|
 |:--:|:---|:---|:---|
@@ -92,6 +96,8 @@ Depending on where you have your parts printed, the cost to print all of the nec
 ![](topmount.png?s=size:small,align:right)Mounted to the top plate, the control rod assemblies connect to these.
 
 The holes are countersunk on one side -- make sure that side faces away from the board when mounting (so the screws can be flush.)
+
+Download the STL file [here](https://raw.githubusercontent.com/developer-journey/stewart-platform/master/models/TopMount.stl).
 
 |Qty|STL Link|Dimensions|Volume|
 |:--:|:---|:---|:---|
