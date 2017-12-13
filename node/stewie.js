@@ -48,32 +48,17 @@ let debounce = (function() {
       return;
     }
     timeout = setTimeout(function () {
-      let x = transform.x, y = transform.y, z = transform.z, M;
+      let x = transform.x, y = transform.y, z = transform.z;
 
-      M = Math.sqrt(x * x + y * y + z * z);
+      x = x * maxAngle;
+      y = y * maxAngle;
+      z = z * maxAngle;
 
-      if (M > 0) {
-        x = x * maxAngle / M;
-        y = y * maxAngle / M;
-        z = z * maxAngle / M;
-      } else {
-        x = 0;
-        y = 0;
-        z = 0;
-      }
+      let tX = transform.tX, tY = transform.tY, tZ = transform.tZ;
 
-      let tX = transform.tX, tY = transform.tY, tZ = transform.tZ, tM;
-
-      tM = Math.sqrt(tX * tX + tY * tY + tZ * tZ);
-      if (tM > 0) {
-        tX = tX * maxDistance / tM;
-        tY = tY * maxDistance / tM;
-        tZ = tZ * maxDistance / tM;
-      } else {
-        tX = 0;
-        tY = 0;
-        tZ = 0;
-      }
+      tX = tX * maxDistance;
+      tY = tY * maxDistance;
+      tZ = tZ * maxDistance;
 
       timeout = 0;
 
@@ -87,34 +72,90 @@ let debounce = (function() {
 })();
 
 ds3.on("l1:analog", function(data) {
-  transform.z = (data / 2);
+console.error(JSON.stringify(data, null, 2));
+  transform.z = alphaExpIn(data / 256);
   debounce();
 });
 ds3.on("l2:analog", function(data) {
-  transform.z = -(data / 2);
+console.error(JSON.stringify(data, null, 2));
+  transform.z = alphaExpIn(-data / 256);
   debounce();
 });
 
 ds3.on("r1:analog", function(data) {
-  transform.tZ = (data / 2);
+console.error(JSON.stringify(data, null, 2));
+  transform.tZ = alphaExpIn(data / 256);
   debounce();
 });
 
 ds3.on("r2:analog", function(data) {
-  transform.tZ = -(data / 2);
+console.error(JSON.stringify(data, null, 2));
+  transform.tZ = alphaExpIn(-data / 256);
+  debounce();
+});
+
+function alphaExpIn(value) {
+  var sign;
+  if (value > 0) {
+    sign = 1;
+  } else {
+    sign = -1;
+    value = -value;
+  }
+  return sign * Math.pow(2, 10 *  value - 10);
+}
+
+function alphaExpOut(value) {
+  var sign;
+  if (value > 0) {
+    sign = 1;
+  } else {
+    sign = -1;
+    value = -value;
+  }
+  return sign * (1 - alphaExpIn(1 - value));
+}
+
+ds3.on("leftAnalogBump:press", function(data) {
+  transform.tZ = maxDistance * 0.5;
+  debounce();
+});
+
+ds3.on("lefttAnalogBump:release", function(data) {
+  transform.tZ = 0;
+  debounce();
+});
+
+ds3.on("rightAnalogBump:press", function(data) {
+  transform.tZ = maxDistance * 0.25;
+  debounce();
+});
+
+ds3.on("rightAnalogBump:release", function(data) {
+  transform.tZ = 0;
+  debounce();
+});
+
+ds3.on("forwardBackward:motion", function(data) {
+  transform.x = alphaExpOut(-data.value / 128);
+  debounce();
+});
+
+ds3.on("rightLeft:motion", function(data) {
+  transform.y = alphaExpOut(data.value / 128);
   debounce();
 });
 
 ds3.on("left:move", function(data) {
-  transform.x = (data.y - 128) / 128;
+/*  transform.x = (data.y - 128) / 128;
   transform.y = (data.x - 128) / 128;
-  debounce();
+  debounce();*/
 });
 
 ds3.on("right:move", function(data) {
-  transform.tX = (data.x - 128) / 128;
+/*  transform.tX = (data.x - 128) / 128;
   transform.tY = (data.y - 128) / 128;
-  debounce();
+  debounce();*/
 });
 
 

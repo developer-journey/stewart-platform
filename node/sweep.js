@@ -1,5 +1,3 @@
-
-
 "use strict";
 
 const duration = 1000;
@@ -38,7 +36,7 @@ function ease(start, stop, period) {
       outputTransform(interpolated);
 
       if (alpha < 1.0) {
-        setTimeout(tick, 1000 / 100);
+        setTimeout(tick, 1000 / 50);
       } else {
         return resolve(stop);
       }
@@ -48,21 +46,32 @@ function ease(start, stop, period) {
   });
 }
 
-let transform = [ 0, 0, 0,  0, 0, 0 ];
+function sweep(transform, duration, loops) {
+  loops = loops || 1;
+  duration = duration || 1000;
+  transform = transform || [ 0, 1, 0, 0, 0, 0, 0 ];
 
-function cycle() {
-  set(transform).then(function(transform) {
-    return ease(transform, [0, 0, 20,  -0.5, 0, 0.5], duration);
-  }).then(function(transform) {
-    return ease(transform, [ -10, 0, 0,  0.5, 0, 0.5], duration);
-  }).then(function(transform) {
-    return ease(transform, [ 0, 0, -20,  0.5, 0, -0.5], duration);
-  }).then(function(transform) {
-    return ease(transform, [ 0, -10, 0,  -0.5, 0, -0.5], duration);
-  }).then(function(update) {
-    transform = update;
-    setTimeout(cycle);
+  return new Promise(function(resolve, reject) {
+    let start = Date.now();
+    function tick() {
+      let now = Date.now(), alpha = ((now - start) % duration) / duration;
+      if (now - start >= duration * loops) {
+        return resolve(transform);
+      }
+
+      let alphaPi = 2 * Math.PI * alpha;
+      transform = [
+        /* axis-angle */
+       0, 0, 1, 20 * Math.cos(alphaPi)
+      ];
+      outputTransform(transform);
+      setTimeout(tick, 1000 / 50);
+    }
+
+    tick();
   });
 }
 
-cycle();
+let transform = [ 0, 0, 0, 0, 0, 0 ];
+
+sweep(transform, 30000, 3);
