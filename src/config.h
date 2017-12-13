@@ -75,21 +75,21 @@
 
 /* With servos at 0 position, vertical distance from link top to servo axis
  * This is used as Z coordinate in the effector_pos */
-#define PLATFORM_HEIGHT    (float)(3.0f + 3.0f / 16.0f)
+#define PLATFORM_HEIGHT    (float)(3.0f + 5.0f / 16.0f)
 
 /* Center of top platform to effector connector in inches */
-#define EFFECTOR_RADIUS    (float)(3.0f + 6.0f / 8.0f)
+#define EFFECTOR_RADIUS    (float)(3.949f)
 
 /* Center of base platform to pivot of servo arm in inches */
-#define BASE_RADIUS        (float)(4.0f + 1.0f / 8.0f)
+#define BASE_RADIUS        (float)(3.0f + 13.0f / 16.0f)
 
 /* Angle (THETA) between paired servo arm pivot points (BASE)
  * IN RADIANS */
-#define THETA_BASE         DEG2RAD(63.0f)
+#define THETA_BASE         DEG2RAD(55.36f)
 
 /* Angle (THETA) between paired effector attachement points (EFFECTOR)
  * IN RADIANS */
-#define THETA_EFFECTOR     DEG2RAD(32.4f)
+#define THETA_EFFECTOR     DEG2RAD(30.75f)
 
 /* Max angles to allow the platform to attempt to move within */
 #define MAX_ROLL      (15.0f)
