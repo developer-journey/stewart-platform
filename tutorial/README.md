@@ -404,20 +404,18 @@ The ‘transform’ utility allows you to move the platform in three dimensions 
 cd stewart-platform
 # center the platform
 sudo bin/transform 0 0 0  0 0 0
-# move up / down
-sudo bin/transform 0 0 5  0 0 0 # up
-sudo bin/transform 0 0 -5  0 0 0 # down
-# move left / right
-sudo bin/transform -5 0 0  0 0 0 # left
-sudo bin/transform 5 0 0  0 0 0 # right
-# move forward / back
-sudo bin/transform 0 5 0  0 0 0 # forward
-sudo bin/transform 0 -5 0  0 0 0 # back
+# roll forward / backward
+sudo bin/transform 5 0 0  0 0 0
+sudo bin/transform -5 0 0  0 0 0
+# pitch left / right
+sudo bin/transform 0 -5 0  0 0 0
+sudo bin/transform 0 5 0  0 0 0
+# yaw clockwise / counter-clockwise
+sudo bin/transform 0 0 5  0 0 0
+sudo bin/transform 0 0 -5  0 0 0
 ```
 
 Experiment with all of the parameters.
-
-For information on how the Stewart platform equations are solved in software, see the journey entry [Solving Stewie](https://01.org/developerjourney/solving-stewie).
 
 View `stewart-platform/README.md` for additional information and utilities provided with the Stewart platform project.
 
