@@ -60,6 +60,7 @@ The total cost to acquire the mechanical parts is approximately $100US (only $34
 | 12  | 10mm M3 threaded shaft (set screw) | Used to connect the ball joint to the connecting rod. [Amazon](https://www.amazon.com/RC4ZS0010-RC4WD-Threaded-Shafts-Screws/dp/B00A795L30) | $5 |
 |  6  |65mm M3 aluminum standoff spacer|Used as the connecting rod. [Amazon](https://www.amazon.com/gp/product/B01NBXUD1E) | $5 |
 | 12  |M3 straight ball joint|Pivot points between the connecting rods, the servos, and the platform. [Amazon](https://www.amazon.com/RC4WD-Medium-Straight-Plastic-Rod/dp/B009PBXIRW) | $5 |
+| 12  |M3 lock nut (3/16" tall)|Used as a spacer between ball joints and mounted positions. You can also print spacers, or use washers, or anything you have that is ~3/16" thick. | $2 |
 
 
 ## 3D Printed Parts
@@ -170,7 +171,7 @@ Assemble six control rods. For each rod, thread one 10mm M3 threaded rod into ea
 
 ![Parts used in this step](control-bracket-assembly.png)
 
-Use six 15mm button head screws to attach the control rods to the three top platform brackets.
+Use six 15mm button head screws to attach the control rods to the three top platform brackets, placing a 3/16" thick spacer (3M lock nut) between the ball joint and the platform bracket (not shown in image).
 
 
 ![Control rods connected to top platform bracket](control-rod-bracket-assembly.png)
@@ -178,13 +179,13 @@ Use six 15mm button head screws to attach the control rods to the three top plat
 
 # Step: Attach servo arm to control rod bracket assembly
 
-![Assembled servo arm control rod bracket assemblies.](assembled-control-rods.png) Next attach servo arms to the the control rod bracket assemblies using six 15mm button screws.
+![Assembled servo arm control rod bracket assemblies.](assembled-control-rods.png) Next attach servo arms to the the control rod bracket assemblies using six 15mm button screws.  Place a 3/16" thick spacer (3M lock nut) between the ball joint and the servo arm (not shown in image).
 
 
 ![](control-rod-servo-arm-orientation.png?s=align:right)
 Be sure to orient the servo arm correctly as seen in this image.
 
-
+**NOTE**: The spacer is not shown in this image.
 
 
 # Step: Drill top and base platforms
@@ -383,9 +384,9 @@ While servo is at zero, remove and reset the servo arm to horizontal.
 
 ![Arm needs to be flipped](initialized-needs-flip.png?s=align:right) **Note** the servo arm may not be able to be exactly horizontal. 
 
-The servo arms have 25 teeth in them to grip the servo. This allows them to be offset by one half of a tooth to provide better alignment by rotating the servo arm 180 degrees.
+The servo arms have 25 teeth in them to grip the servo. This allows them to be offset by one half of a tooth to provide better alignment by rotating the servo arm 180°.
 
-To remedy, unscrew the control rod from the servo arm, rotate the servo arm 180 degrees, and see if it can mount closer to horizontally. Pick whichever is closest to horizontal. Re-attach control rod.
+To remedy, unscrew the control rod from the servo arm, rotate the servo arm 180°, and see if it can mount closer to horizontally. Pick whichever is closest to horizontal. Re-attach control rod.
 
 
 ![Horizontal at zero](servo-corrected.png)Arm is now horizontal at servo 0 position. Install the servo arm set screw to fix the arm at this position.
@@ -464,7 +465,7 @@ The images below are intended help you better understand which values to measure
 
 Servo arm length in inches from center to ball joint pivot.
 
-Defaults to 1 5/16” (34mm)
+Defaults to 1 7/16”
 
 
 ## CONTROL_ROD_LENGTH
@@ -473,7 +474,7 @@ Defaults to 1 5/16” (34mm)
 
 Control rod length in inches from ball joint center to center.
 
-Defaults to 3 7/16” (90mm) 
+Defaults to 4 1/16”
 
 
 ## PLATFORM_HEIGHT
@@ -484,7 +485,7 @@ With servos at 0 position, vertical distance servo axis to the top of the contro
 
 This is used as Z coordinate in the effector_pos.
 
-Defaults to 6 ⅜” (162mm)
+Defaults to 3 5/16”
 
 
 **NOTE**: This is a value that could be calculated automatically based on the triangles formed from the servo arm, control rod length, and the top and bottom radii. However I haven't done that yet, so the code must define it.
@@ -495,7 +496,7 @@ Defaults to 6 ⅜” (162mm)
 
 Center of top platform to effector ball joint connector center in inches.
 
-Defaults to 3 ⅝” (92.5mm)
+Defaults to 3.949”
 
 
 ## BASE_RADIUS
@@ -504,7 +505,7 @@ Defaults to 3 ⅝” (92.5mm)
 
 Center of base platform to control rod *pivot** point along servo arm axis, in inches.
 
-Defaults to 4” (101.6mm)
+Defaults to 3 13/16”
 
 **NOTE**: This is not just the measurement to the servo arm, but to where the plane of the control rod's ball joint intersects with the servo arm axis.
 
@@ -515,9 +516,7 @@ Defaults to 4” (101.6mm)
 
 Angle (THETA) between paired servo arm pivot points (BASE)
 
-In the above image, it is the angle spanning to the servo arm (the larger of the two angles) That angle is to the base’ axis (31.6°). The angle between two servos is twice that, or 63.2°.
-
-Defaults to 63.2° (1.1rad)
+Defaults to 55.36°
 
 
 ## THETA_EFFECTOR
@@ -526,7 +525,5 @@ Defaults to 63.2° (1.1rad)
 
 Angle (THETA) between paired effector attachment points (EFFECTOR)
 
-In the above image, it is the angle spanning to the control arm connector (the smaller of the two angles) That angle is to the base’ axis (16.3°). The angle between two servos is twice that, or 32.6°.
-
-Defaults to 32.6° (0.57rad)
+Defaults to 30.75°
 
