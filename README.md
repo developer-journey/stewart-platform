@@ -3,7 +3,7 @@ Copyright (C) 2015-2017 Intel Corporation
 
 ## Overview
 
-![Do the Wave!](tutorial/Wave.gif)
+![Do the Wave!](tutorial/wave.gif)
 
 This directory provides **examples** that serve as supplimentary
 material for the Developer Journey [1] to build a type of parallel 
