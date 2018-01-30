@@ -133,3 +133,13 @@ bin/joytrack /dev/input/js0 | sudo bin/transform
 ```
 
 You can then control pitch and roll with left directional controller.
+
+
+# Disclaimer
+
+This project is released as reference code for research purposes. It is 
+not an official Intel product, and the level of quality and support may 
+not be as expected from an official product.
+
+Feedback and contributions from the open source community are more than 
+welcome.
